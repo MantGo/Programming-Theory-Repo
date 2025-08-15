@@ -7,6 +7,8 @@ public class CubeShape : Shape
 
     public override void DisplayInfo()
     {
-        Debug.Log("This is a Cube!");
+        MessageHolder.Instance.uiText.text = "This is a Cube!";
+        GetComponent<Renderer>().material.color = Color.red; 
+
     }
 }

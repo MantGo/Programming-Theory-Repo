@@ -7,6 +7,8 @@ public class CapsuleShape : Shape
 
     public override void DisplayInfo()
     {
-        Debug.Log("This is a Capsule!");
+        MessageHolder.Instance.uiText.text = "This is a Capsule!";
+        GetComponent<Renderer>().material.color = Color.blue; 
+
     }
 }

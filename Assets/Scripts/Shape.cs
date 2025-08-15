@@ -1,29 +1,19 @@
 using UnityEngine;
 
-// Base class: encapsulation + abstraction
-[RequireComponent(typeof(Collider))] // ensures a collider exists when you add this script
+[RequireComponent(typeof(Collider))]
 public class Shape : MonoBehaviour
 {
-    [SerializeField] private string shapeName = "Shape"; // ENCAPSULATION
+    [SerializeField] private string shapeName = "Shape";
+    public string ShapeName { get { return shapeName; } protected set { shapeName = value; } }
 
-    public string ShapeName
-    {
-        get { return shapeName; }
-        protected set { shapeName = value; }
-    }
-
-    // ABSTRACTION: high-level method that derived classes can override
+    // ABSTRACTION: updates text in one simple call
     public virtual void DisplayInfo()
     {
-        Debug.Log("This is a " + ShapeName);
+        MessageHolder.Instance.uiText.text = "This is a " + ShapeName;
     }
 
- 
     private void OnMouseDown()
     {
-        // Quick debug line you can temporarily use to ensure OnMouseDown runs:
-        // Debug.Log("OnMouseDown fired on " + gameObject.name);
-
-        DisplayInfo(); // POLYMORPHISM: calls override in derived classes if present
+        DisplayInfo(); // called automatically on click
     }
 }

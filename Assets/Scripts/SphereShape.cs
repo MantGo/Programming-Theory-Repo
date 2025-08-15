@@ -9,6 +9,8 @@ public class SphereShape : Shape
     // POLYMORPHISM: override to give sphere-specific output
     public override void DisplayInfo()
     {
-        Debug.Log("This is a round Sphere!");
+        MessageHolder.Instance.uiText.text = "This is a round Sphere!";
+        GetComponent<Renderer>().material.color = Color.green; 
+
     }
 }
